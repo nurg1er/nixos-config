@@ -80,6 +80,9 @@
   # Use systemd bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  
+  # Use latest kernel cuz hw
+  boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
 
   # Blacklist nouveau, duh
   boot.blacklistedKernelModules = [ "nouveau" ];

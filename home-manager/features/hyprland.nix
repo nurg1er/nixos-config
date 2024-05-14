@@ -5,14 +5,14 @@
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     "$alt_mod" = "ALT";
-#    "monitor" = "eDP-1,2560x1600@96,0x0,1.6";
+    "monitor" = "eDP-1,2560x1600@96,0x0,1.6";
 
     env = [
       "NIXOS_OZONE_WL, 1"
       "XDG_CURRENT_DESKTOP, Hyprland"
       "XDG_SESSION_TYPE, wayland"
       "XDG_SESSION_DESKTOP, Hyprland"
-      "WLR_DRM_DEVICES,/dev/dri/by-path/pci-0000:69:00.0-card"
+      "WLR_DRM_DEVICES,/dev/dri/card1"
       "QT_QPA_PLATFORMTHEME, qt6ct"
     ];
 
