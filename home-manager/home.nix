@@ -18,8 +18,8 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
-    ./features/bash
-    ./features/hyprland
+    ./features/bash.nix
+    ./features/hyprland.nix
   ];
 
   nixpkgs = {
