@@ -72,9 +72,15 @@
   };
 
   # FIXME: Add the rest of your current configuration
-  boot.blacklistedKernelModules = [ "nouveau" ];
-  networking.networkmanager.enable = true;
+  # Boot
+  # Use systemd bootloader
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
+  # Blacklist nouveau, duh
+  boot.blacklistedKernelModules = [ "nouveau" ];
+
+  networking.networkmanager.enable = true;
 
   networking.hostName = "booblik";
 
