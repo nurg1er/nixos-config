@@ -3,4 +3,5 @@
 {
   # List your module files here
   bash = import ./bash.nix;
+  hyprland = import ./hyprland.nix;
 }

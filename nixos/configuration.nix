@@ -84,6 +84,15 @@
 
   networking.hostName = "booblik";
 
+  environment.systemPackages = with pkgs; [
+    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    git
+    wget
+    curl
+  ];
+
+  environment.variables.EDITOR = "nvim";
+
   users.users = {
     nurgler = {
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
