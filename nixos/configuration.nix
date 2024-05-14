@@ -59,6 +59,9 @@
       flake-registry = "";
       # Workaround for https://github.com/NixOS/nix/issues/9574
       nix-path = config.nix.nixPath;
+
+      substituters = ["https://hyprland.cachix.org"];
+      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
     # Opinionated: disable channels
     channel.enable = false;
@@ -69,24 +72,27 @@
   };
 
   # FIXME: Add the rest of your current configuration
+  boot.blacklistedKernelModules = [ "nouveau" ];
+  networking.networkmanager.enable = true;
 
-  # TODO: Set your hostname
-  networking.hostName = "your-hostname";
 
-  # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
+  networking.hostName = "booblik";
+
   users.users = {
-    # FIXME: Replace with your username
-    your-username = {
-      # TODO: You can set an initial password for your user.
+    nurgler = {
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
-      initialPassword = "correcthorsebatterystaple";
+      initialPassword = "kanzascityshuffle";
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
+        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJS5Hq9Kd+P8H7aXS3Evv7f6XyjE2J9hVTrOQOBK9CQ6xGQ9qbJ7q2hXbNizLgaGU61l9mGbnipPHR5rh5HVJEoyPBqvtraMk5+etM64pxCTos2bOdGbnN0U8HaMFa0hWDnpT3m0q/2GWY82hKK0wxQOyLjx8wTp//KJRClWmZcsNFLXPwXTe08TP5cf7VkiO84HrLoPpjYrytSY0AdBPtskIYBYAvjJGG0Wq99w1jAIDi1+C9TK4AvMJyPQS2ljaQiaJuodbhmViX+HpwdTb1LkHshH0/4xhB7HgniI2uu1/1iuiPbR8GSSKOiF3fz/dHZPb82XmmiBdOqyAPzzAxHxj3ecPtcqnHTAMWe8NB6J9yBcl35/gbAgY0ANUO5tu49hrc2VW6eAjPj8jrUVG94ptKZaIw0jX2Icbk3ko5mrd9J0nphOlZ0re1ZxLVOjgEXci6x9nopgTN0tMzq6iHL6OmONwxS3WPuJsRV2FIdC1hEBwnpCix7XPJWbNbwns= nurgler@zefirka"
       ];
-      # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["wheel"];
+      extraGroups = [
+        "wheel"
+        "audio"
+        "video"
+        "networkmanager"
+      ];
     };
   };
 
@@ -104,5 +110,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }
