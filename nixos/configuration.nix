@@ -41,6 +41,10 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
+      (final: prev: {
+        asusctl = pkgs.unstable.asusctl;
+        supergfxctl = pkgs.unstable.supergfxctl;
+      })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -148,13 +152,13 @@
   services.asusd = {
     enable = true;
     enableUserService = true;
-    package = pkgs.unstable.asusctl;
+    #package = pkgs.unstable.asusctl;
   };
 
   services.supergfxd = {
     enable = true;
     path = [ pkgs.pciutils pkgs.lsof ];
-    package = pkgs.unstable.supergfxd;
+    #package = pkgs.unstable.supergfxd;
   };
 
   hardware = {
