@@ -93,6 +93,87 @@
 
   environment.variables.EDITOR = "nvim";
 
+  # NVIDIA
+
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.nvidia = {
+
+    # Modesetting is required.
+    modesetting.enable = true;
+
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    # Enable this if you have graphical corruption issues or application crashes after waking
+    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
+    # of just the bare essentials.
+    #powerManagement.enable = true;
+
+    # Fine-grained power management. Turns off GPU when not in use.
+    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+    #powerManagement.finegrained = true;
+
+    # Use the NVidia open source kernel module (not to be confused with the
+    # independent third-party "nouveau" open source driver).
+    # Support is limited to the Turing and later architectures. Full list of
+    # supported GPUs is at:
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
+    # Only available from driver 515.43.04+
+    # Currently alpha-quality/buggy, so false is currently the recommended setting.
+    open = false;
+
+    # Enable the Nvidia settings menu,
+    # accessible via `nvidia-settings`.
+    nvidiaSettings = true;
+
+    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    package = config.boot.kernelPackages.nvidiaPackages.production;
+#    nvidiaPersistenced = true;
+#    dynamicBoost.enable = true;
+
+    #prime = {
+    #  offload.enable = true;
+    #  offload.enableOffloadCmd = true;
+
+    #  amdgpuBusId = "PCI:69:00:0";
+    #  nvidiaBusId = "PCI:1:00:0";
+    #};
+  };
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
+  # ASUS Stuff
+
+  services.asusd = {
+    enable = true;
+    enableUserService = true;
+    package = pkgs.unstable.asusctl;
+  };
+
+  services.supergfxd = {
+    enable = true;
+    path = [ pkgs.pciutils pkgs.lsof ];
+    package = pkgs.unstable.supergfxd;
+  };
+
+  hardware = {
+    pulseaudio.enable = false;
+  };
+
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = false;
+    wireplumber.enable = true;
+  };
+
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
   programs.hyprland.enable = true;
 
   users.users = {
