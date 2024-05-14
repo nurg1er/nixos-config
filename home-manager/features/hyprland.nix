@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 
   wayland.windowManager.hyprland.enable = true;
-  wayland.windowManager.hyptland.package = pkgs.unstable.hyprland;
+  wayland.windowManager.hyprland.package = pkgs.unstable.hyprland;
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     "$alt_mod" = "ALT";
