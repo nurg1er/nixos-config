@@ -93,6 +93,8 @@
     git
     wget
     curl
+    pciutils
+    lsof
   ];
 
   environment.variables.EDITOR = "nvim";
@@ -157,7 +159,7 @@
 
   services.supergfxd = {
     enable = true;
-    path = [ pkgs.pciutils pkgs.lsof ];
+    #path = [ pkgs.pciutils pkgs.lsof ];
     #package = pkgs.unstable.supergfxd;
   };
 
