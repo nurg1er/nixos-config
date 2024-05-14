@@ -12,7 +12,7 @@
 	  "XDG_CURRENT_DESKTOP, Hyprland"
 	  "XDG_SESSION_TYPE, wayland"
 	  "XDG_SESSION_DESKTOP, Hyprland"
-	  "WLR_DRM_DEVICES,/dev/dri/card1:/dev/dri/card2"
+	  "WLR_DRM_DEVICES,/dev/dri/card0"
 	  "QT_QPA_PLATFORMTHEME, qt6ct"
     ];
 
