@@ -62,6 +62,7 @@
   
   # Terminal
   programs.alacritty.enable = true;
+  programs.google-chrome.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

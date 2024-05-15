@@ -114,11 +114,11 @@
     # Enable this if you have graphical corruption issues or application crashes after waking
     # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
     # of just the bare essentials.
-    #powerManagement.enable = true;
+    powerManagement.enable = true;
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    #powerManagement.finegrained = true;
+    powerManagement.finegrained = true;
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
@@ -136,15 +136,15 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.production;
 #    nvidiaPersistenced = true;
-#    dynamicBoost.enable = true;
+    dynamicBoost.enable = true;
 
-    #prime = {
-    #  offload.enable = true;
-    #  offload.enableOffloadCmd = true;
+    prime = {
+      offload.enable = true;
+      offload.enableOffloadCmd = true;
 
-    #  amdgpuBusId = "PCI:69:00:0";
-    #  nvidiaBusId = "PCI:1:00:0";
-    #};
+      amdgpuBusId = "PCI:69:00:0";
+      nvidiaBusId = "PCI:1:00:0";
+    };
   };
 
   hardware.bluetooth = {
